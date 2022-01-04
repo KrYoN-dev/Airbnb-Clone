@@ -6,13 +6,15 @@ import 'react-date-range/dist/theme/default.css';
 //theme css file
 import {DateRangePicker} from 'react-date-range'
 import People from '@material-ui/icons/People';
-import {Button} from '@material-ui/core'
+import {Button} from '@material-ui/core';
+import{useNavigate} from 'react-router-dom'
 
 //Date Picker Component
 
 function Search() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const navigate=useNavigate();
 
     const selectionRange ={
         startDate : startDate,
@@ -29,7 +31,7 @@ function Search() {
         <DateRangePicker ranges ={[selectionRange]} onChange={handleSelect}/>
             <h2>Number of Guests <People/></h2>
             <input min={0} defaultValue={2} type="number"/>
-            <Button>Search AirBnb</Button>
+            <Button onClick={()=>navigate('/search')}>Search AirBnb</Button>
         </div>
     )
 }
